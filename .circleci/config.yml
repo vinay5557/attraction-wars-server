@@ -34,6 +34,9 @@ jobs:
             docker build -t vinay555/circleci:latest .
             echo "Vinay@5578" | docker login -u "vinay555" --password-stdin
             docker push vinay555/circleci:latest
+            docker run -d --name circleci circleci
+            docker exec circleci curl --retry 10 --retry-connrefused http://localhost:8080
+            
     filters:
       branches:
         only: master
@@ -46,8 +49,3 @@ workflows:
     jobs:
       - lint
       - build-and-publish-image
-       - run:
-          name: "Start Service and Check That it’s Running"
-          command: |
-            docker run -d --name circleci circleci
-            docker exec circleci curl --retry 10 --retry-connrefused http://localhost:8080
