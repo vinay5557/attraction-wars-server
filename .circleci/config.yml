@@ -31,9 +31,9 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t "$IMAGE_NAME":latest .
-            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker push "$IMAGE_NAME":latest
+            docker build -t vinay555/circleci:latest .
+            echo "Vinay@5578" | docker login -u "vinay555" --password-stdin
+            docker push vinay555/circleci:latest
     filters:
       branches:
         only: master
