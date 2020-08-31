@@ -34,8 +34,8 @@ jobs:
             docker build -t vinay555/circleci:latest .
             echo "Vinay@5578" | docker login -u "vinay555" --password-stdin
             docker push vinay555/circleci:latest
-            docker run -d --name circleci circleci
-            docker exec circleci curl --retry 10 --retry-connrefused http://localhost:8080
+            docker run -d vinay555/circleci
+            docker exec vinay555/circleci curl --retry 10 --retry-connrefused http://localhost:8080
             
     filters:
       branches:
